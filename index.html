@@ -148,8 +148,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 8rem; /* Reduced top spacing */
-            padding-bottom: 2rem; /* Reduced bottom spacing */
+            padding-top: 8rem;
+            padding-bottom: 2rem;
         }
 
         .hero-img {
@@ -314,7 +314,9 @@
         /* GitHub Stats */
         .github-stats {
             text-align: center;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
         }
         
         .github-stats img {
@@ -364,6 +366,7 @@
             border-radius: 8px;
             color: var(--text-color);
             transition: var(--transition);
+            font-size: 1rem;
         }
         
         .form-control:focus {
@@ -526,9 +529,9 @@
             </div>
         </div>
 
-        <!-- GitHub Stats Card -->
+        <!-- NEW FIXED GitHub Stats API using Streak API -->
         <div class="github-stats">
-            <img src="https://github-readme-stats.vercel.app/api?username=tusharbhoi2005-sudo&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117" alt="Tushar's GitHub Stats">
+            <img src="https://github-readme-streak-stats.herokuapp.com/?user=tusharbhoi2005-sudo&theme=radical&hide_border=true&background=0D1117" alt="Tushar's GitHub Stats">
         </div>
     </section>
 
@@ -564,6 +567,8 @@
     <section id="contact">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-wrapper glass">
+            
+            <!-- Contact Information Side -->
             <div class="contact-info">
                 <h3 style="margin-bottom: 1rem;">Contact Information</h3>
                 <p><i class="fas fa-envelope" style="color: var(--primary-color);"></i> <a href="mailto:tusharbhoi2005@gmail.com">tusharbhoi2005@gmail.com</a></p>
@@ -572,5 +577,32 @@
                 <p><i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i> Malpur, Tal. Shindkheda, Dist. Dhule</p>
             </div>
             
+            <!-- Working Formspree Contact Form Side -->
             <form class="contact-form" action="https://formspree.io/f/mzezoozp" method="POST">
-                <input type="tex
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+            
+        </div>
+    </section>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
