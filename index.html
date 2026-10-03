@@ -9,6 +9,38 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <style>
+        /* Preloader */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-gradient-1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Keeps it on top of everything */
+            transition: opacity 0.5s ease-out;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader-hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
         :root {
             --primary-color: #60a5fa; /* Professional Light Blue */
             --text-color: #f1f5f9;
@@ -415,6 +447,10 @@
     </style>
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
 
     <nav>
         <div class="nav-container">
@@ -590,6 +626,15 @@
     </section>
 
     <script>
+        // Loader Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.classList.add('loader-hidden');
+            // Completely remove it from the background after fading out
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        });
         // Mobile Menu Toggle
         const menuBtn = document.querySelector('.menu-btn');
         const navLinks = document.querySelector('.nav-links');
